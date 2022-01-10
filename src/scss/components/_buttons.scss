@@ -1,0 +1,15 @@
+@use "../config/variable" as *;
+
+
+.btn-nav-search {
+    font-size: 24px;
+    color: $white;
+    z-index: 100;
+    &:focus{
+        box-shadow: none;
+    }
+
+    &:hover{
+        color: $secondary;
+    }
+}
