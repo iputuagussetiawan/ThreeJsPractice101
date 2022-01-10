@@ -50864,7 +50864,7 @@ var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene();
 
 */
 
-var cam = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, innerWidth / innerHeight, 1, 100);
+var cam = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 100);
 var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer();
 var box = new three__WEBPACK_IMPORTED_MODULE_0__.BoxGeometry(1, 1, 1); //Membuat Box dengan ukuran P:1 L:1 T:1
 
@@ -50880,8 +50880,10 @@ renderer.setSize(innerWidth, innerHeight);
 document.body.appendChild(renderer.domElement);
 renderer.render(scene, cam);
 window.addEventListener('resize', function () {
-  renderer.setSize(this.window.innerWidth, this.window.innerHeight); ///cam.aspect=this.window.innerWidth,this.window.innerHeight
-
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  renderer.setSize(width, height);
+  cam.aspect = width / height;
   cam.updateProjectionMatrix();
 });
 

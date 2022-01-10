@@ -19,7 +19,7 @@ const scene = new THREE.Scene();
     4.Far Clip seberapa jauh kamera bisa melihat
 
 */
-const cam = new THREE.PerspectiveCamera(45,innerWidth/innerHeight,1,100);
+const cam = new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,1,100);
 var renderer=new THREE.WebGLRenderer();
 
 var box=new THREE.BoxGeometry(1,1,1);//Membuat Box dengan ukuran P:1 L:1 T:1
@@ -34,8 +34,10 @@ document.body.appendChild(renderer.domElement);
 renderer.render(scene,cam);
 
 window.addEventListener('resize',function(){
-    renderer.setSize(this.window.innerWidth,this.window.innerHeight);
-    ///cam.aspect=this.window.innerWidth,this.window.innerHeight
+    var width=window.innerWidth;
+    var height=window.innerHeight;
+    renderer.setSize(width,height)
+    cam.aspect=width / height
     cam.updateProjectionMatrix();
 })
 
